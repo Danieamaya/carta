@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Una ruta para ti ❤️🏍️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia, "Times New Roman", serif;
+    background:#05070d;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ESTRELLAS */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+
+    background-image:
+    radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1px),
+    radial-gradient(circle,rgba(255,255,255,.5) 1px,transparent 1px);
+
+    background-size:90px 90px,150px 150px;
+    background-position:10px 20px,50px 70px;
+
+    opacity:.3;
+    z-index:0;
+}
+
+/* =========================
+   1. INICIO
+========================= */
+
+.inicio{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+    padding:30px;
+
+    position:relative;
+    z-index:1;
+
+    background:
+    radial-gradient(circle at 50% 18%,#354157,#121824 42%,#03050a 80%);
+}
+
+.luna{
+    position:absolute;
+
+    top:9%;
+    right:12%;
+
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    background:#f4f0d0;
+
+    box-shadow:
+    0 0 25px #eee7b5,
+    0 0 70px rgba(238,231,181,.3);
+}
+
+.contenido{
+    max-width:760px;
+}
+
+.moto-grande{
+    font-size:95px;
+
+    animation:
+    flotar 2s infinite ease-in-out,
+    brillo 2s infinite alternate;
+}
+
+.inicio h1{
+    font-size:52px;
+    margin:20px 0 15px;
+}
+
+.subtitulo{
+    font-size:21px;
+    line-height:1.8;
+    color:#ddd;
+}
+
+.boton{
+    margin-top:35px;
+
+    padding:16px 35px;
+
+    border:1px solid #e0b64d;
+    border-radius:35px;
+
+    background:#a9112d;
+    color:white;
+
+    font-size:18px;
+    cursor:pointer;
+
+    box-shadow:0 0 20px rgba(169,17,45,.5);
+
+    transition:.3s;
+}
+
+.boton:hover{
+    transform:scale(1.07);
+}
+
+/* =========================
+   2. RECORRIDO
+========================= */
+
+.viaje{
+    display:none;
+
+    min-height:100vh;
+
+    position:relative;
+    z-index:1;
+
+    text-align:center;
+
+    padding:70px 20px 100px;
+
+    background:
+    linear-gradient(
+        rgba(4,6,12,.65),
+        rgba(4,6,12,.9)
+    ),
+    radial-gradient(
+        circle at 50% 5%,
+        #2b384e,
+        #070a11 70%
+    );
+}
+
+.viaje h2{
+    font-size:40px;
+    margin-bottom:25px;
+}
+
+.frase{
+    max-width:760px;
+
+    margin:30px auto;
+
+    font-size:21px;
+
+    line-height:1.9;
+
+    color:#ededed;
+}
+
+/* =========================
+   CARRETERA
+========================= */
+
+.carretera{
+    width:100%;
+    max-width:950px;
+
+    height:150px;
+
+    margin:55px auto;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#15171b;
+
+    border-top:4px solid #777;
+    border-bottom:4px solid #777;
+
+    box-shadow:0 0 40px rgba(0,0,0,.8);
+}
+
+.raya{
+    position:absolute;
+
+    top:70px;
+    left:0;
+
+    width:100%;
+    height:7px;
+
+    background:
+    repeating-linear-gradient(
+        90deg,
+        white 0 75px,
+        transparent 75px 135px
+    );
+
+    animation:carretera 1s linear infinite;
+}
+
+.moto-carretera{
+    position:absolute;
+
+    top:33px;
+    left:-110px;
+
+    font-size:68px;
+
+    animation:rodar 7s linear infinite;
+}
+
+/* =========================
+   FRASES
+========================= */
+
+.frase-ruta{
+    max-width:700px;
+
+    margin:65px auto;
+
+    font-size:25px;
+
+    font-style:italic;
+
+    color:#e5c86d;
+
+    line-height:1.7;
+
+    opacity:0;
+
+    animation:aparecer 2s forwards;
+}
+
+.frase-ruta:nth-of-type(2){
+    animation-delay:.6s;
+}
+
+.frase-ruta:nth-of-type(3){
+    animation-delay:1.2s;
+}
+
+/* =========================
+   3. SOBRE
+========================= */
+
+.sobre-seccion{
+    margin-top:100px;
+}
+
+.sobre-seccion h3{
+    font-size:32px;
+    margin-bottom:12px;
+}
+
+.instruccion{
+    color:#bdbdbd;
+    margin-bottom:35px;
+}
+
+.sobre-contenedor{
+    position:relative;
+
+    width:330px;
+    height:260px;
+
+    margin:auto;
+}
+
+.sobre{
+    position:absolute;
+
+    left:15px;
+    bottom:0;
+
+    width:300px;
+    height:200px;
+
+    cursor:pointer;
+
+    perspective:1000px;
+}
+
+.cuerpo-sobre{
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+    height:165px;
+
+    background:#e4c9a5;
+
+    border-radius:6px;
+
+    overflow:hidden;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.7);
+
+    z-index:1;
+}
+
+.triangulo-izq{
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-top:82px solid transparent;
+    border-bottom:82px solid transparent;
+    border-left:150px solid #d4b88f;
+}
+
+.triangulo-der{
+    position:absolute;
+
+    right:0;
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-top:82px solid transparent;
+    border-bottom:82px solid transparent;
+    border-right:150px solid #d4b88f;
+}
+
+.triangulo-abajo{
+    position:absolute;
+
+    bottom:0;
+    left:0;
+
+    width:0;
+    height:0;
+
+    border-left:150px solid transparent;
+    border-right:150px solid transparent;
+    border-bottom:95px solid #c8a77d;
+}
+
+.tapa{
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:0;
+    height:0;
+
+    border-left:150px solid transparent;
+    border-right:150px solid transparent;
+    border-top:105px solid #f2ddbd;
+
+    transform-origin:top;
+
+    transition:1s;
+
+    z-index:5;
+}
+
+.sello{
+    position:absolute;
+
+    top:78px;
+    left:125px;
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    background:#a9112d;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:24px;
+
+    z-index:7;
+
+    transition:.6s;
+}
+
+/* =========================
+   5. HUMO
+========================= */
+
+.humo{
+    display:none;
+
+    position:absolute;
+
+    left:0;
+    bottom:30px;
+
+    width:100%;
+    height:250px;
+
+    pointer-events:none;
+
+    z-index:10;
+}
+
+.nube{
+    position:absolute;
+
+    width:75px;
+    height:75px;
+
+    border-radius:50%;
+
+    background:rgba(220,220,220,.3);
+
+    filter:blur(9px);
+
+    animation:humoSube 2.8s ease-out forwards;
+}
+
+.nube:nth-child(1){
+    left:25%;
+}
+
+.nube:nth-child(2){
+    left:45%;
+    animation-delay:.25s;
+}
+
+.nube:nth-child(3){
+    left:65%;
+    animation-delay:.5s;
+}
+
+.nube:nth-child(4){
+    left:52%;
+    animation-delay:.8s;
+}
+
+/* =========================
+   6. CARTA
+========================= */
+
+.carta{
+    display:none;
+
+    max-width:880px;
+
+    margin:80px auto 0;
+
+    background:#fffaf0;
+
+    color:#292929;
+
+    padding:48px;
+
+    border-radius:12px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.7);
+
+    text-align:left;
+
+    animation:cartaAparece 1.5s ease;
+}
+
+.carta::before{
+    content:"❤️";
+
+    display:block;
+
+    text-align:center;
+
+    font-size:28px;
+
+    margin-bottom:10px;
+}
+
+.carta h2{
+    text-align:center;
+
+    color:#94152d;
+
+    font-size:32px;
+
+    margin-bottom:30px;
+}
+
+.carta p{
+    font-size:18px;
+
+    line-height:1.95;
+
+    margin-bottom:20px;
+}
+
+.firma{
+    text-align:center;
+
+    color:#94152d;
+
+    font-size:23px;
+
+    font-weight:bold;
+
+    margin-top:35px;
+}
+
+/* BOTÓN CERRAR */
+
+.cerrar-carta{
+    display:block;
+
+    margin:35px auto 5px;
+
+    padding:13px 27px;
+
+    border:1px solid #94152d;
+
+    border-radius:25px;
+
+    background:#94152d;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.cerrar-carta:hover{
+    transform:scale(1.05);
+}
+
+/* =========================
+   7. FINAL
+========================= */
+
+.final-ruta{
+    display:none;
+
+    max-width:780px;
+
+    margin:100px auto 0;
+
+    text-align:center;
+
+    animation:aparecer 2s ease;
+}
+
+.corazon-final{
+    font-size:75px;
+
+    margin-bottom:25px;
+
+    animation:latido 1.3s infinite;
+}
+
+.final-ruta h2{
+    font-size:40px;
+
+    color:#e3c45e;
+
+    margin-bottom:30px;
+}
+
+.final-ruta p{
+    font-size:21px;
+
+    line-height:1.9;
+
+    color:#ddd;
+
+    margin-bottom:20px;
+}
+
+.mensaje-final{
+    margin-top:35px;
+
+    font-size:24px !important;
+
+    color:#f1d77a !important;
+
+    font-style:italic;
+}
+
+.destino{
+    margin-top:45px;
+
+    font-size:32px;
+
+    color:#e3c45e;
+
+    font-weight:bold;
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes flotar{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+}
+
+@keyframes brillo{
+
+    from{
+        filter:drop-shadow(0 0 5px rgba(255,255,255,.1));
+    }
+
+    to{
+        filter:drop-shadow(0 0 18px rgba(255,255,255,.6));
+    }
+
+}
+
+@keyframes carretera{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-135px);
+    }
+
+}
+
+@keyframes rodar{
+
+    from{
+        left:-110px;
+    }
+
+    to{
+        left:calc(100% + 110px);
+    }
+
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes cartaAparece{
+
+    from{
+        opacity:0;
+        transform:translateY(60px) scale(.95);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+
+@keyframes humoSube{
+
+    0%{
+        transform:translateY(20px) scale(.4);
+        opacity:0;
+    }
+
+    25%{
+        opacity:.8;
+    }
+
+    100%{
+        transform:translateY(-190px) scale(2.3);
+        opacity:0;
+    }
+
+}
+
+@keyframes latido{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media(max-width:600px){
+
+    .luna{
+        width:60px;
+        height:60px;
+        right:7%;
+    }
+
+    .inicio h1{
+        font-size:37px;
+    }
+
+    .moto-grande{
+        font-size:72px;
+    }
+
+    .subtitulo{
+        font-size:18px;
+    }
+
+    .viaje h2{
+        font-size:32px;
+    }
+
+    .frase{
+        font-size:18px;
+    }
+
+    .frase-ruta{
+        font-size:21px;
+    }
+
+    .sobre-contenedor{
+        transform:scale(.88);
+    }
+
+    .carta{
+        padding:28px 20px;
+    }
+
+    .carta h2{
+        font-size:27px;
+    }
+
+    .carta p{
+        font-size:16px;
+        line-height:1.8;
+    }
+
+    .final-ruta h2{
+        font-size:31px;
+    }
+
+    .final-ruta p{
+        font-size:18px;
+    }
+
+    .destino{
+        font-size:26px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     1. ENTRA Y VE LA MOTO
+========================= -->
+
+<section class="inicio" id="inicio">
+
+<div class="luna"></div>
+
+<div class="contenido">
+
+<div class="moto-grande">
+🏍️
+</div>
+
+<h1>
+Una ruta para ti ❤️
+</h1>
+
+<p class="subtitulo">
+
+Hay caminos que uno recorre sin saber dónde terminan...
+pero hay algunos que se vuelven especiales
+porque se recorren junto a alguien que queremos muchísimo.
+
+</p>
+
+<button class="boton" onclick="comenzar()">
+🏍️ Comenzar el viaje
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     2. COMIENZA EL RECORRIDO
+========================= -->
+
+<section class="viaje" id="viaje">
+
+<h2>
+🏍️ Nuestra ruta
+</h2>
+
+<p class="frase">
+
+No importa cuántos caminos existan,
+hay uno que quiero seguir:
+el camino que me lleva hacia ti.
+
+</p>
+
+
+<div class="carretera">
+
+<div class="raya"></div>
+
+<div class="moto-carretera">
+🏍️
+</div>
+
+</div>
+
+
+<p class="frase-ruta">
+
+"Hay personas que llegan a nuestra vida
+y hacen que el camino sea mucho más bonito."
+
+</p>
+
+
+<p class="frase-ruta">
+
+"Y entre tantos caminos,
+qué bonito haber coincidido contigo."
+
+</p>
+
+
+<p class="frase-ruta">
+
+"Este no es el final del camino...
+todavía nos quedan muchos kilómetros por recorrer."
+
+</p>
+
+
+<p class="frase">
+
+A veces la vida acelera.
+A veces nos hace detenernos.
+Pero quiero seguir compartiendo contigo
+cada parte de este camino.
+
+</p>
+
+
+<!-- =========================
+     3. LLEGA AL SOBRE
+========================= -->
+
+<div class="sobre-seccion">
+
+<h3>
+💌 Hay algo para ti...
+</h3>
+
+<p class="instruccion">
+Toca el sobre para abrirlo ❤️
+</p>
+
+
+<div class="sobre-contenedor">
+
+<div class="sobre" id="sobre" onclick="abrirSobre()">
+
+<div class="cuerpo-sobre">
+
+<div class="triangulo-izq"></div>
+
+<div class="triangulo-der"></div>
+
+<div class="triangulo-abajo"></div>
+
+</div>
+
+
+<div class="tapa"></div>
+
+
+<div class="sello">
+❤️
+</div>
+
+</div>
+
+
+<!-- HUMO -->
+
+<div class="humo" id="humo">
+
+<div class="nube"></div>
+<div class="nube"></div>
+<div class="nube"></div>
+<div class="nube"></div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     6. CARTA
+========================= -->
+
+<div class="carta" id="carta">
+
+<h2>
+Para ti, con todo mi corazón ❤️
+</h2>
+
+
+<p>
+Amor, quiero que sepas algo que quizás muchas veces no digo
+de la manera en que debería, pero que siento muchísimo:
+te amo.
+</p>
+
+
+<p>
+Te amo por todo lo que eres, por la forma en que llegaste a mi vida
+y por todos esos momentos que, aunque algunos parezcan pequeños,
+para mí significan muchísimo.
+</p>
+
+
+<p>
+A veces me cuesta explicar todo lo que siento.
+Hay días en los que estoy estresada, cansada o simplemente
+me pongo rara, y sé que quizás en esos momentos no soy
+la persona más fácil de entender.
+</p>
+
+
+<p>
+Pero quiero que recuerdes algo:
+que yo esté estresada, cansada o tenga un día complicado
+no significa que te ame menos.
+Nunca quiero que confundas mis momentos difíciles
+con falta de amor hacia ti.
+</p>
+
+
+<p>
+Porque incluso cuando estoy teniendo un día malo,
+sigues siendo una de las personas más importantes para mí.
+Mi cariño por ti no desaparece porque tenga un mal día.
+</p>
+
+
+<p>
+Quiero que sepas que valoro muchísimo tenerte en mi vida.
+Valoro tus palabras, tus detalles, nuestras conversaciones,
+las risas y todos esos momentos que hemos compartido.
+</p>
+
+
+<p>
+Quizás no siempre encuentro las palabras perfectas,
+pero mi corazón sí sabe lo que siente.
+Y lo que siente por ti es algo muy grande.
+</p>
+
+
+<p>
+Quiero seguir creando recuerdos contigo.
+Quiero seguir riéndome contigo, hablando contigo,
+compartiendo momentos y disfrutando cada etapa
+que nos toque vivir.
+</p>
+
+
+<p>
+No quiero que pienses que tienes que ser perfecto
+para que yo te ame.
+Te quiero por ser tú, con tus cualidades,
+tus defectos, tus ocurrencias y tu manera de ser.
+</p>
+
+
+<p>
+Y si algún día me notas diferente,
+quiero que recuerdes esta carta.
+Recuerda que detrás de cualquier día complicado
+sigue estando la misma persona que te quiere muchísimo.
+</p>
+
+
+<p>
+Quiero cuidar lo que tenemos y seguir poniendo de mi parte.
+Quiero aprender, mejorar y también aprender a expresar mejor
+todo lo que siento.
+</p>
+
+
+<p>
+Gracias por estar en mi vida.
+Gracias por los momentos bonitos,
+por las sonrisas y por formar parte de tantos recuerdos
+que guardo con muchísimo cariño.
+</p>
+
+
+<p>
+Si nuestra historia fuera una carretera,
+no quiero preocuparme solamente por llegar al destino.
+Quiero disfrutar el camino contigo:
+las curvas, las paradas, los días tranquilos,
+los días difíciles y todos esos momentos
+que todavía nos faltan por vivir.
+</p>
+
+
+<p>
+Porque si hay algo que tengo claro,
+es que quiero seguir recorriendo este camino contigo.
+</p>
+
+
+<p>
+Así que nunca dudes de lo mucho que te amo.
+Aunque a veces me estrese.
+Aunque a veces me ponga rara.
+Aunque haya días en los que no sepa cómo expresar lo que siento.
+</p>
+
+
+<p>
+Mi amor por ti sigue estando ahí.
+Y quiero que siempre puedas recordarlo.
+</p>
+
+
+<p>
+Eres una persona muy especial para mí
+y tienes un lugar enorme en mi corazón.
+</p>
+
+
+<p>
+Quiero seguir viviendo momentos contigo,
+seguir haciendo recuerdos
+y seguir descubriendo todo lo que nos espera.
+</p>
+
+
+<p>
+Y si algún día volvemos a mirar atrás,
+quiero que podamos sonreír al recordar
+todo el camino que recorrimos juntos.
+</p>
+
+
+<p>
+Te amo muchísimo. ❤️
+</p>
+
+
+<div class="firma">
+
+Con todo mi amor ❤️
+
+</div>
+
+
+<button class="cerrar-carta" onclick="cerrarCarta()">
+
+💌 Cerrar mi carta
+
+</button>
+
+</div>
+
+
+<!-- =========================
+     7. FINAL
+========================= -->
+
+<div class="final-ruta" id="finalRuta">
+
+<div class="corazon-final">
+❤️
+</div>
+
+
+<h2>
+🏁 Ruta terminada
+</h2>
+
+
+<p>
+
+Llegamos al final de esta pequeña ruta...
+
+</p>
+
+
+<p>
+
+Pero antes de terminar,
+quiero que te quedes con algo:
+
+</p>
+
+
+<p class="mensaje-final">
+
+No importa cuántos caminos existan,
+cuántas curvas aparezcan
+o cuántas veces tengamos que detenernos...
+
+</p>
+
+
+<p class="mensaje-final">
+
+<strong>
+yo quiero seguir recorriendo este camino contigo.
+</strong>
+
+</p>
+
+
+<p>
+
+Quiero seguir creando recuerdos,
+seguir compartiendo momentos,
+seguir riéndome contigo
+y seguir descubriendo todo lo que la vida
+todavía tiene preparado para nosotros.
+
+</p>
+
+
+<p>
+
+Porque entre tantos caminos posibles,
+me alegra muchísimo haber encontrado
+uno que me llevó hacia ti.
+
+</p>
+
+
+<p>
+
+Y aunque esta pequeña ruta llegue a su final,
+nuestra historia todavía tiene muchos kilómetros por delante.
+
+</p>
+
+
+<div class="destino">
+
+🏁 Destino: tu corazón ❤️
+
+</div>
+
+</div>
+
+
+</section>
+
+
+<script>
+
+/* =========================
+   COMENZAR RECORRIDO
+========================= */
+
+function comenzar(){
+
+    document.getElementById("inicio").style.display="none";
+
+    document.getElementById("viaje").style.display="block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   ABRIR SOBRE
+========================= */
+
+function abrirSobre(){
+
+    const sobre =
+    document.getElementById("sobre");
+
+    const humo =
+    document.getElementById("humo");
+
+    const carta =
+    document.getElementById("carta");
+
+
+    if(sobre.classList.contains("abierto")){
+        return;
+    }
+
+
+    sobre.classList.add("abierto");
+
+    humo.style.display="block";
+
+
+    setTimeout(function(){
+
+        carta.style.display="block";
+
+        carta.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+    },1700);
+
+}
+
+
+/* =========================
+   CERRAR CARTA
+========================= */
+
+function cerrarCarta(){
+
+    const carta =
+    document.getElementById("carta");
+
+    const sobre =
+    document.getElementById("sobre");
+
+    const humo =
+    document.getElementById("humo");
+
+    const finalRuta =
+    document.getElementById("finalRuta");
+
+
+    carta.style.display="none";
+
+    sobre.classList.remove("abierto");
+
+    humo.style.display="none";
+
+
+    finalRuta.style.display="block";
+
+
+    finalRuta.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
